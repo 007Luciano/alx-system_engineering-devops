@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Default NGINX configuration file
+sites_available_config_file="/etc/nginx/sites-available/default"
+sites_enabled_config_file="/etc/nginx/sites-enabled/default"
+
+# Stop NGINX
+service nginx stop
+
+# Edit NGINX configuration to listen on port 80
+sed -i 's/listen 8080;/listen 80;/g' "$sites_available_config_file"
+sed -i 's/ listen 8080;/ listen 80;/g' "$sites_available_config_file"
+sed -i 's/ ipv6only=on//g' "$sites_available_config_file"
+
+#delete the default file
+rm "$sites_enabled_config_file"
+
+cp "$sites_available_config_file" "$sites_enabled_config_file"
+# Start NGINX
+service nginx restart

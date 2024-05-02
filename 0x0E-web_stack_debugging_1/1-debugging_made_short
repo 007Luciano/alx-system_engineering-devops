@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#set nginx to listen on port 80
+sed -i -e 's/listen 8080;/listen 80/g' -e 's/ listen 8080;/ listen 80/g' -e 's/ ipv6only=on//' /etc/nginx/sites-available/default
+cp /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+nginx -s reload
