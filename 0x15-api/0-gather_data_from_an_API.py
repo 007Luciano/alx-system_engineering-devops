@@ -30,10 +30,6 @@ if __name__ == '__main__':
         tasks = list(filter(lambda x: x.get('userId') == id, todos_data))
         completed_tasks = list(filter(lambda x: x.get('completed'), tasks))
 
-        print(
-            f'Employee {emp_name} is done with tasks({len(completed_tasks)}/{len(tasks)}):'
-        )
-
         for task in completed_tasks:
             print(f'\t {task.get("title")}')
     else:
